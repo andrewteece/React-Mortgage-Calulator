@@ -52,25 +52,56 @@ function MortgageCalculator() {
   return (
     <div className="mortgage-wrapper">
       <h2>Mortgage Calculator</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Home Price ($):</label>
-          <input type="number" name="amount" required />
+          <input
+            type="number"
+            name="amount"
+            value={formData.amount}
+            onChange={handleChange}
+            required
+          />
         </div>
         <div className="form-group">
           <label>Down Payment ($):</label>
-          <input type="number" name="downPayment" required />
+          <input
+            type="number"
+            name="downPayment"
+            value={formData.downPayment}
+            onChange={handleChange}
+            required
+          />
         </div>
         <div className="form-group">
           <label>Interest Rate (%):</label>
-          <input type="number" name="interestRate" required />
+          <input
+            type="number"
+            name="interestRate"
+            value={formData.interestRate}
+            onChange={handleChange}
+            required
+          />
         </div>
         <div className="form-group">
           <label>Loan Term (years):</label>
-          <input type="number" name="loanTerm" required />
+          <input
+            type="number"
+            name="loanTerm"
+            value={formData.loanTerm}
+            onChange={handleChange}
+            required
+          />
         </div>
         <button type="submit">Calculate</button>
       </form>
+      {payment && (
+        <div>
+          <h3>Monthly Payment: {payment}</h3>
+          <h3>Total Loan Payment: {total}</h3>
+          <h3>Total Interest Payment: {interes}</h3>
+        </div>
+      )}
     </div>
   );
 }
